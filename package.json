@@ -1,0 +1,52 @@
+{
+  "name": "translation-helper",
+  "displayName": "zipwp Translation Helper",
+  "description": "Automatically find and replace text on save.",
+  "version": "0.0.1",
+  "publisher": "thezem",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.addUseTranslation",
+        "title": "Add useTranslation"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.addUseTranslation",
+        "key": "ctrl+t ctrl+r"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Auto Find and Replace Settings",
+      "properties": {
+        "autoFindReplaceOnSave.ruleSets": {
+          "type": "object",
+          "default": {},
+          "description": "Define rules for find and replace on save."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/parser": "^7.24.5",
+    "@babel/traverse": "^7.24.5"
+  },
+  "devDependencies": {
+    "vscode": "^1.1.28",
+    "vsce": "^1.57.0"
+  }
+}
